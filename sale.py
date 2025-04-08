@@ -20,8 +20,3 @@ class SaleLine(metaclass=PoolMeta):
                 self.on_change_discount_rate()
             else:
                 self.unit_price = self.base_price
-
-    @fields.depends('unit_price')
-    def on_change_quantity(self):
-        super().on_change_quantity()
-        self.base_price = self.unit_price
