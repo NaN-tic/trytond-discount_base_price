@@ -4,6 +4,7 @@
 from trytond.pool import Pool
 from . import invoice
 from . import sale
+from . import stock
 
 def register():
     Pool.register(
@@ -13,4 +14,8 @@ def register():
     Pool.register(
         sale.SaleLine,
         depends=['sale_discount'],
+        module='discount_base_price', type_='model')
+    Pool.register(
+        stock.Move,
+        depends=['stock_valued'],
         module='discount_base_price', type_='model')
